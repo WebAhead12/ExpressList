@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="To-Do List.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+
+
+    <h1>My To-Do List</h1>
+    <br>
+    <br>
+
+
+    <main>
+        <br>
+
+        <div class="categories">
+            <div type="button" class="cat-content" for="show-all">
+                Groceries
+            </div>
+            &nbsp;
+            <div type="button" class="cat-content" for="completed">
+                Work
+            </div>
+            &nbsp;
+            <div type="button" class="cat-content" for="incomplete">
+                School
+            </div>
+        </div>
+
+        <div class="task-status">
+            <div>
+                <div type="button" class="status" for="show-all">
+                    Show All
+                </div>
+            </div>
+            &nbsp;
+            <div>
+                <div class="status " for="completed">
+                    Completed
+                </div>
+            </div>
+            &nbsp;
+            <div>
+                <div class="status" for="incomplete">
+                    Incomplete
+                </div>
+            </div>
+
+
+        </div>
+        <!-- <div class=task-status>
+            <div class=status>Show All</div>
+            <div class=status>Completed</div>
+            <div class=status>Incomplete</div>
+        </div> -->
+
+<body>
+    <h2>Active Tasks</h2>
+
+    <div class="active-tasks">
+        <p>
+            <label for="new-task"></label>
+            <input id="newTask" type="text" placeholder="Add new task here">
+        </p>
+        <button class=add>Add</button>
+        <button class="delete-all">Clear All</button>
+
+        <ul id="tasks">
+            <li>
+                <input type="checkbox">
+                <label>A</label>
+                <input type="text">
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+            </li>
+            <li class="edit-mode">
+                <input type="checkbox">
+                <label>B</label>
+                <input type="text" value="">
+                <button class="edit">Edit</button>
+                <button id='Cancel' data-text="Cancel" style="display:none;">Cancel</button>
+                <button class="delete">Delete</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="completed-tasks">
+        <h3>Completed Tasks</h3>
+
+        <ul id="completed-tasks">
+
+            <li>
+                <input type="checkbox" checked>
+                <label>C</label>
+                <input type="text" value="">
+                <button class="edit">Edit</button>
+                <button id='Cancel' data-text="Cancel" style="display:none;">Cancel</button>
+                <button class="delete">Delete</button>
+            </li>
+        </ul>
+    </div>
+
+
+    <script src="To-Do List.js"></script>
+</body>
+</main>
+
+</html>
+
+<!-- 
+     < <div class="categories">
+         <input type="text" class="new-list" placeholder="Create a new list" style="color: black;">
+         <input type="button" value="Add">
+
+         <br><br>
+    <div class="inline-list">
+     <button type="button" class="type">Homework </button>
+    
+     <input type="button" id="options" value="Edit">
+     <input type="button" id="options" value="Remove">
+     <button type="button" class="type">Work </button>
+     <input type="button" id="options" value="Edit">
+     <input type="button" id="options" value="Remove">
+     <button type="button" class="type">Groceries </button>
+     <input type="button" id="options" value="Edit">
+     <input type="button" id="options" value="Remove">
+ </div>
+     </div> -->

@@ -1,0 +1,160 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+    position: relative;
+    background-color: rgb(60, 168, 109, 0.4); 
+}
+
+body h1 {
+    color: #333;
+    display: flex;
+    justify-content: center;
+    position: relative;
+ background-color: rgb(60, 168, 109, 0.4);
+ 
+}
+
+
+/* Basic Style */
+body{
+  background-image:url(/Css%20stuff/backgroundimg.png);
+  color: #333;
+  font-family: 'Indie Flower', cursive;
+      background-color: rgb(60, 168, 109, 0.4);
+
+}
+
+.task-status {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+top: -80px;
+border-radius: 100%;
+
+}
+
+.status {
+  line-height: 3.5;
+  font-size: 80%;
+  font-weight: 700;
+  border-radius: 100%;
+  
+}
+
+
+ul {
+  margin: 0;
+  padding: 0;
+  
+  
+}
+
+/*  setting all elements to have zero margins, and zero padding */
+li * {
+  float: left;
+}
+
+li {
+  clear:both;
+  list-style:none;
+}
+
+.add, .delete-all, .edit, .delete, .status{
+  background-color: rgba(68, 65, 65, 0.288);
+  border: 0px;
+  color: #333;
+  font-size: 20px;
+  width: 100px;
+  margin: 5px 0 0 0;
+  cursor: pointer;
+  font-family: 'Indie Flower', cursive;
+}
+.onIt{
+  border: 3px solid rgb(60, 168, 109, 0.4);
+  background: rgb(60, 168, 109, 0.4);
+}
+button:hover {
+  color: #333;
+}
+
+input[type="text"] {
+  margin: 0;
+  font-size: 18px;
+  line-height: 18px;
+  height: 18px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  color: #888;
+font-family: 'Indie Flower', cursive;
+
+}
+input[type="text"]:focus {
+  color: #333;
+}
+
+/* New Task */
+label[for='new-task'] {
+  display: block;
+  margin: 0 0 20px;
+}
+input#new-task {
+  float: left;
+  width: 318px;
+}
+
+
+/* tasklist */
+li {
+  overflow: hidden;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+  font-weight: 700;
+
+}
+
+/* The > sign is to signify parent/child */
+li > input[type="checkbox"] {
+  margin: 0 10px;
+  position: relative;
+  top: 15px;
+}
+li > label {
+  font-size: 18px;
+  line-height: 40px;
+  width: 237px;
+  padding: 0 0 0 11px;
+}
+li >  input[type="text"] {
+  width: 226px;
+}
+li > .delete:hover {
+  color: #5a0f0f;
+}
+
+/* Completed Tasks */
+#completed-tasks label {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Edit Task */
+ul li input[type=text] {
+  display:none;
+}
+
+ul li.editMode input[type=text] {
+  display:block;
+}
+
+ul li.editMode label {
+  display:none;
+}
+
