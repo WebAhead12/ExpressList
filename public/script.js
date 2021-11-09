@@ -6,6 +6,8 @@ const options = document.querySelectorAll('.status')
 const tasksStatus = document.querySelector('.task-status')
 
 tasksStatus.addEventListener('click', (event) => {
+  console.log(event.target);
+  if (event.target == tasksStatus) return;
   for (let option of options) {
     option.classList.remove('onIt')
   }
