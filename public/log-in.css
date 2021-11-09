@@ -57,6 +57,19 @@ background-color: rgb(60, 168, 109, 0.4);
 font-family: 'Indie Flower', cursive;
 outline-color: rgba(109, 172, 137);
  }
+ #pass {  margin: 0;
+  font-size: 18px;
+  line-height: 18px;
+  height: 18px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  color: #888;
+font-family: 'Indie Flower', cursive;
+outline-color: rgba(109, 172, 137);
+
+ }
 
  .search-button, #sign-in {
   background-color: rgba(68, 65, 65, 0.288);
