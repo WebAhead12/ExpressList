@@ -7,18 +7,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="To-Do List.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
 
 
     <h1>My To-Do List</h1>
-    <br>
-    <br>
 
-
+    <div class="task-status">
+        <div>
+            <div type="button" class="status" for="show-all">
+                Show All
+            </div>
+        </div>
+        &nbsp;
+        <div>
+            <div class="status " for="completed">
+                Completed
+            </div>
+        </div>
+        &nbsp;
+        <div>
+            <div class="status" for="incomplete">
+                Incomplete
+            </div>
+        </div>
+    </div>
     <main>
-        <br>
+
+
 
         <div class="categories">
             <div type="button" class="cat-content" for="show-all">
@@ -34,27 +51,6 @@
             </div>
         </div>
 
-        <div class="task-status">
-            <div>
-                <div type="button" class="status" for="show-all">
-                    Show All
-                </div>
-            </div>
-            &nbsp;
-            <div>
-                <div class="status " for="completed">
-                    Completed
-                </div>
-            </div>
-            &nbsp;
-            <div>
-                <div class="status" for="incomplete">
-                    Incomplete
-                </div>
-            </div>
-
-
-        </div>
         <!-- <div class=task-status>
             <div class=status>Show All</div>
             <div class=status>Completed</div>
@@ -108,7 +104,7 @@
     </div>
 
 
-    <script src="To-Do List.js"></script>
+    <script src="script.js"></script>
 </body>
 </main>
 

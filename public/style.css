@@ -15,7 +15,7 @@ body h1 {
     justify-content: center;
     position: relative;
  background-color: rgb(60, 168, 109, 0.4);
- 
+  margin-bottom: 10px;
 }
 
 
@@ -29,14 +29,14 @@ body{
 }
 
 .task-status {
-  position: absolute;
+  /* position: absolute; */
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 top: -80px;
 border-radius: 100%;
-
+text-align: center;
 }
 
 .status {
