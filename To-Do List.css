@@ -47,6 +47,14 @@ border-radius: 100%;
   
 }
 
+.categories {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 
 ul {
   margin: 0;
