@@ -14,14 +14,13 @@ function saveList() {
 
 // Gets the user object from data.
 function getUserObject(user) {
-  accountsList.forEach((element) => {
-    if (element["user"] === user) return element;
-  });
-  return {};
+  return accountsList.find((element) => element["user"].toLowerCase() === user.toLowerCase());
 }
 // Adds a new account to the data.
 function newAccount(user, password) {
-  if (Objects.keys(getUserObject(user)).length) return false;
+  // console.log(Object.keys(getUserObject(user)).length);
+  if (getUserObject(user))
+    return false;
   accountsList.push({ user: user, password: password });
   saveList();
   return true;
@@ -29,19 +28,23 @@ function newAccount(user, password) {
 
 // Return the account user if it exists;
 function getAccountUser(user, password) {
-  if (getUserObject(user)["password"] == password) return user;
-  return "";
+  console.log("pass:", password, "getUserObject(user):", getUserObject(user)["password"]);
+  if (getUserObject(user))
+    if (getUserObject(user)["password"] == password) return user;
+  return undefined;
 }
 
 // Returns a tokenified account.
 function tokenifyAccount(account) {
+
   newAccount(account.user, account.password);
-  return jwt.sign(getUserObject(user), SECRET);
+  return jwt.sign({ user: account.user, password: account.password }, SECRET);
 }
 
 // Return the account associated with the token.
 function getTokenUser(token) {
   let tempAcc = jwt.verify(token, SECRET);
+
   return getAccountUser(tempAcc["user"], tempAcc["password"]);
 }
 

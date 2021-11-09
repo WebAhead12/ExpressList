@@ -9,9 +9,9 @@ server.use(express.json());
 server.use(cookiePraser());
 
 server.use((req, res, next) => {
-    const token = req.cookie.account
+    const token = req.cookies.account
     if (token) {
-        const user = authHandler.getTokenUser(req.cookie.account);
+        const user = authHandler.getTokenUser(token);
         if (user != '')
             req.user = user;
     }
@@ -29,8 +29,12 @@ server.get('/', (req, res) => {
 
 server.post('/', (req, res) => {
     const account = req.body;
-    const token = authHandler.toknifyAccount(account);
+    const token = authHandler.tokenifyAccount(account);
     res.cookie('account', token, { maxAge: 600000 });
+    // console.log(authHandler.getTokenUser(token));
+    if (!authHandler.getTokenUser(token)) {
+        res.send("0")//false
+    }
 
 })
 

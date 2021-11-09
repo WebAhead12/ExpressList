@@ -33,7 +33,6 @@ searchBtn.addEventListener("click", (event) => {
 });
 
 signInBtn.addEventListener("click", (event) => {
-  console.log("login");
   fetch('../', {
     method: "POST",
     body: JSON.stringify({ "user": userInput.value, "password": passwordInput.value }),
@@ -42,8 +41,11 @@ signInBtn.addEventListener("click", (event) => {
 
     .then(response => {
       if (!response.ok) throw new Error(response.status);
-      return response.json();
+      console.log(response);
+
+      return response;
     }).then(json => {
+      console.log("reached")
       passwordInput.value = ''
       setTimeout(() => {
         passwordInput.style.background = 'white'
