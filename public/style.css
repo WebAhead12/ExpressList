@@ -1,25 +1,4 @@
-@media screen and (min-width:498px) {
-  .log-out {
-    position: absolute;
-    z-index: 5;
-    margin-top: 1%;
-    display: flex;
-    flex-wrap:wrap;
-word-wrap: normal;
-    background-color: rgba(206, 20, 20, 0.288);
-    border: 0px;
-    color: rgb(8, 8, 8);
-    font-size: 130%;
-    font-weight: 700;
-    margin-left: 2%;
-    word-wrap: normal;
-    max-width: 15%;
-    height: 60px;
-    cursor: pointer;
-    font-family: "Indie Flower", cursive;
-  }
-   
-}
+
 
 
 .container {
@@ -82,6 +61,8 @@ input[type="text"] {
   border-radius: 6px;
   color: #888;
   font-family: "Indie Flower", cursive;
+  width: 250px;
+  ;
 }
 input[type="text"]:focus {
   color: #333;
