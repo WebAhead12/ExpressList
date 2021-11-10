@@ -46,12 +46,11 @@ window.onclick = function (event) {
     }
   }
 };
-
 //Stops category js from applying to input
 newCategory.addEventListener("click", (event) => {
   event.stopPropagation();
 });
-
+//Reset category input when clicking on it.
 newCategory.addEventListener("focusin", () => {
   newCategory.value = "";
   newCategory.style.background = "white";

@@ -115,8 +115,8 @@ server.get("/user/:user/data/:type/:category", (req, res) => {
   res.redirect(`/user/:user/data/${type}`);
 });
 
-//Receives the user new todolist data.
-server.post("/user/:user/:method", (req, res) => {});
+//Receives the user new todolist data. {method: "modify", taskText: "Blah", newTaskText: "" }
+server.post("/user/:user/", (req, res) => {});
 
 //Receives the user new category, or category deletion.
 server.post("/user/:user/category", (req, res) => {
