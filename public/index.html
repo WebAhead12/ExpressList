@@ -7,17 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/button-content.css" <link rel="preconnect" href="https://fonts.gstatic.com"
+        crossorigin>
+    <script defer src="/script.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" />
 
 
     <div class="container">
+        <button class=log-out>Log Out</button>
         <h1>My To-Do List</h1>
 
-        <div class="task-status">
 
+        <div class="task-status">
             <div type="button" class="status" for="show-all">
                 Show All
             </div>
@@ -38,13 +42,27 @@
         <main>
 
 
+            <!-- have all-tasks set as default, have selected task stay selected until unselected, which them back to all tasks -->
+            <!-- add you will be signed up if you don't have an account to log-in -->
+            <!-- update CSS for password error placeholder -->
+            <!-- make search error placeholder -->
+
 
             <div class="categories">
                 <button onclick="myFunction()" class="dropbtn">Categories</button>
                 <div id="myDropdown" class="dropdown-content">
-                    <a href="#">Groceries</a>
-                    <a href="#">School</a>
-                    <a href="#">Work</a>
+                    <input id="status" type="text" placeholder="Create a new category...">
+                    <div class="dropdown-links">
+
+                        <a href="#"><i id="close-icon" class="fa fa-times"></i> Groceries
+                            </i></a>
+
+                        <a href="#"><i id="close-icon" class="fa fa-times"></i> School
+                            </i></a>
+
+                        <a href="#"><i id="close-icon" class="fa fa-times"></i> Work
+                            </i></a>
+                    </div>
                 </div>
             </div>
 

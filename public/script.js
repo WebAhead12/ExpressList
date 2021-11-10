@@ -6,6 +6,17 @@ const options = document.querySelectorAll('.status')
 const tasksStatus = document.querySelector('.task-status')
 const myDropdown = document.getElementById("myDropdown")
 const dropdownContent = document.getElementsByClassName("dropdown-content")
+const newCategory = document.querySelector("#status")
+const close = document.querySelector("#closeIcon");
+const categoryList = document.querySelector(".dropdown-links")
+
+
+
+
+newCategory.addEventListener("click", (event) => {
+  event.stopPropagation();
+})
+
 
 
 function myFunction() {
@@ -32,7 +43,6 @@ tasksStatus.addEventListener('click', (event) => {
   }
   event.target.classList.add('onIt')
 })
-
 var createNewTaskElement = function (taskString) {
   var listItem = document.createElement("li");
   var checkBox = document.createElement("input");
@@ -40,6 +50,8 @@ var createNewTaskElement = function (taskString) {
   var editInput = document.createElement("input");
   var editButton = document.createElement("button");
   var deleteButton = document.createElement("button");
+  var categoryItem = document.createElement("a");
+
 
   label.innerText = taskString;
 
@@ -57,6 +69,7 @@ var createNewTaskElement = function (taskString) {
   listItem.appendChild(editInput);
   listItem.appendChild(editButton);
   listItem.appendChild(deleteButton);
+  listItem.appendChild(categoryItem)
   return listItem;
 }
 
@@ -66,6 +79,14 @@ var addTask = function () {
   tasksHolder.appendChild(listItem);
   bindTaskEvents(listItem, completedTasks);
   taskInput.value = "";
+}
+
+var addCategory = function () {
+  console.log("Add Category...");
+  var listItem = createNewCategory(newCategory.value);
+
+
+
 }
 
 var editTask = function () {
@@ -115,24 +136,63 @@ addBtn.addEventListener("click", addTask);
 
 taskInput.addEventListener("keyup", (event) => {
 
-  if (event.keyCode == 13) {
+  if (event.key == "Enter") {
     event.preventDefault();
     addBtn.click();
   }
 });
 
-// taskInput.addEventListener('keyup', (event) => {
-//   if (event.keycode == 13) {
-//     const labelClassArr = Array.from(document.querySelector('.edit').classList)
-//     //selecting an object that would be given the class 'show' if clicked on modify
-//     if (labelClassArr.indexOf('show') == -1) {
-//       button.click()
-//     } else {
-//       modifyButton.click()
-//     }
-//   }
-// })
+newCategory.addEventListener("focusin", () => {
+  newCategory.value = ""
+  newCategory.style.background = 'white'
+  newCategory.placeholder = "Create a new category..."
+})
 
+function onCategoryClick() {
+
+}
+
+newCategory.addEventListener("keyup", (event) => {
+  if (event.key == "Enter") {
+    event.preventDefault();
+    newCategory.blur();
+    categoryList.innerHTML = ""
+    let urlArray = window.location.href.split("/")
+    fetch(`/${urlArray[urlArray.length - 1]}/category`, {
+      method: "POST",
+      body: JSON.stringify({ "category": newCategory.value }),
+      headers: { "content-type": "application/json" },
+    })
+
+      .then(response => {
+        if (!response.ok) throw new Error(response.status);
+        return response.json();
+      })
+      .then(array => {
+        array.forEach(categoryName => {
+          let newDocument = document.createElement("a")
+          newDocument.addEventListener("click", onCategoryClick)
+          newDocument.innerHTML = `<i class="fa fa-times close-icon"></i> ${categoryName}`
+          categoryList.append(newDocument)
+        });
+      })
+      .catch(error => {
+        newCategory.value = "An error has occured"
+        //Change value color to error color
+        newCategory.style.background = 'PaleGoldenrod'
+        newCategory.placeholder = "Not your To-Do List"
+        setTimeout(() => {
+          if (newCategory.value == "An error has occured") {
+            newCategory.value = "";
+
+            //Change value color back to default
+            newCategory.style.background = 'white'
+            newCategory.placeholder = "Create a new category"
+          }
+        }, 1500)
+      })
+  }
+})
 
 
 var bindTaskEvents = function (taskListItem, checkBoxEventHandler) {

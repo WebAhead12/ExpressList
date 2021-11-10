@@ -7,21 +7,21 @@ const alert = document.querySelector('.alert-box');
 
 
 searchInput.addEventListener("keyup", (event) => {
-  if (event.keyCode == 13) {
+  if (event.key == "Enter") {
     event.preventDefault();
     searchBtn.click();
   }
 });
 
 userInput.addEventListener("keyup", (event) => {
-  if (event.keyCode == 13) {
+  if (event.key == "Enter") {
     event.preventDefault();
     signInBtn.click();
   }
 });
 
 passwordInput.addEventListener("keyup", (event) => {
-  if (event.keyCode == 13) {
+  if (event.key == "Enter") {
     event.preventDefault();
     signInBtn.click();
   }
@@ -33,7 +33,7 @@ searchBtn.addEventListener("click", (event) => {
 });
 
 signInBtn.addEventListener("click", (event) => {
-  fetch('../', {
+  fetch('/', {
     method: "POST",
     body: JSON.stringify({ "user": userInput.value, "password": passwordInput.value }),
     headers: { "content-type": "application/json" },
@@ -41,16 +41,22 @@ signInBtn.addEventListener("click", (event) => {
 
     .then(response => {
       if (!response.ok) throw new Error(response.status);
-      return response;
+      return response.json();
     }).then(json => {
-      passwordInput.value = ''
-      setTimeout(() => {
-        passwordInput.style.background = 'white'
-        passwordInput.placeholder = "New task!"
-      }, 2500)
-      passwordInput.style.background = 'IndianRed'
-      passwordInput.placeholder = "Wrong password!"
-      alert.innerText = '';
+      console.log(json.error)
+      if (json.error) {
+        passwordInput.value = ''
+        setTimeout(() => {
+          passwordInput.style.background = 'white'
+          passwordInput.placeholder = "Password"
+        }, 1000)
+        passwordInput.style.background = 'PaleGoldenrod'
+        passwordInput.placeholder = "Wrong password!"
+        alert.innerText = '';
+        return;
+      }
+      if (json.user)
+        window.location.href = `/user/${json.user}`
     })
     .catch(error => alert.innerText = "An error has occured")
 });
