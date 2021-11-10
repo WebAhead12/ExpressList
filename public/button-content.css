@@ -141,6 +141,28 @@ button:hover {
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #ddd}
 
+
+.add:hover {
+  background-color: rgb(44, 141, 87);
+} 
+.delete-all:hover {
+  background-color: rgb(44, 141, 87);
+} 
+.edit:hover {
+  background-color: rgb(44, 141, 87);
+} 
+
+.status:hover {
+  background-color: rgb(44, 141, 87);
+}
+.delete:hover {
+  background-color: rgb(44, 141, 87);
+}
+.log-out:hover {
+  background-color: rgb(44, 141, 87);
+  color: black;
+}
+
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 

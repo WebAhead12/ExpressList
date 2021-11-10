@@ -3,6 +3,7 @@ body{
   color: #333;
   font-family: 'Indie Flower', cursive;
       background-color: rgb(60, 168, 109, 0.4);
+      z-index: -1;
 }
 
 h2 {
@@ -61,7 +62,8 @@ font-family: 'Indie Flower', cursive;
 outline-color: rgba(109, 172, 137);
 color: #333;
  }
- #pass {  margin: 0;
+ #pass {  
+   margin: 0;
   font-size: 18px;
   line-height: 18px;
   height: 18px;
@@ -69,7 +71,7 @@ color: #333;
   border: 1px solid #ddd;
   background: #fff;
   border-radius: 6px;
-  color: color: #333;
+  color: #333;
 font-family: 'Indie Flower', cursive;
 outline-color: rgba(109, 172, 137);
 
