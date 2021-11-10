@@ -35,6 +35,7 @@ function getCategories(user) {
   let userData = getUserData(user);
   return userData.categories;
 }
+
 // Adds a new category to a user's data.
 function addCategory(user, category) {
   setupToDoList(user);
@@ -106,6 +107,7 @@ function toggleTaskCompletion(user, taskText) {
 }
 
 module.exports = {
+  getUserData,
   checkUserLoginData,
   getCategories,
   addCategory,
