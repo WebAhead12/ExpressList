@@ -4,34 +4,36 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-top: -80px;
-border-radius: 100%;
-text-align: center;
-
+  top: -80px;
+  border-radius: 100%;
+  text-align: center;
 }
 /* adjust in media query */
- .log-out {
- position: absolute;
-   z-index: 5;
-   margin-top: 1%;
-display: flex;
-flex-wrap: wrap;
-background-color: rgba(10, 9, 9, 0.288);
-border: 0px;
-color: rgb(8, 8, 8);
-font-size: 80%;
-font-weight: 700;
-margin-left: 2%;
-word-wrap:normal;
-max-width: 10%;
-height: fit-content;
+.log-out {
+  position: absolute;
+  z-index: 5;
+  margin-top: 1%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgba(10, 9, 9, 0.288);
+  border: 0px;
+  color: rgb(8, 8, 8);
+  font-size: 80%;
+  font-weight: 700;
+  margin-left: 2%;
+  word-wrap: normal;
+  max-width: 10%;
+  height: fit-content;
 
+  cursor: pointer;
+  font-family: "Indie Flower", cursive;
+}
 
-cursor: pointer;
-font-family: 'Indie Flower', cursive;
- }
-
-.add, .delete-all, .edit, .delete, .status{
+.add,
+.delete-all,
+.edit,
+.delete,
+.status {
   background-color: rgba(68, 65, 65, 0.288);
   border: 0px;
   color: #333;
@@ -39,24 +41,18 @@ font-family: 'Indie Flower', cursive;
   width: 100px;
   margin: 5px 0 0 0;
   cursor: pointer;
-  font-family: 'Indie Flower', cursive;
+  font-family: "Indie Flower", cursive;
 }
-.onIt{
+.onIt {
   border: 3px solid rgb(60, 168, 109, 0.4);
   background: rgb(60, 168, 109, 0.4);
 }
 
-
-.categoryOnIt:focus {
-  border: 3px solid rgb(60, 168, 109, 0.4);
-  background: rgb(60, 168, 109, 0.4);
-
-}
 .status {
   line-height: 3.5;
   font-weight: 700;
   border-radius: 100%;
-  background-color:rgba(116, 111, 111, 0.8);
+  background-color: rgba(116, 111, 111, 0.8);
 }
 
 .categories {
@@ -64,14 +60,14 @@ font-family: 'Indie Flower', cursive;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-top: -80px;
-text-align: center;
-background-color:rgba(109, 172, 137, 0.6);
-width: 100%;
+  top: -80px;
+  text-align: center;
+  background-color: rgba(109, 172, 137, 0.6);
+  width: 100%;
 }
 
 #status {
-  width: 90%;  
+  width: 90%;
   border: 1px solid rgb(83, 163, 107);
 }
 
@@ -79,7 +75,7 @@ width: 100%;
   font-size: 130%;
   font-weight: 700;
   margin-left: 7%;
-  margin-right:7%;
+  margin-right: 7%;
 }
 
 /* Dropdown Button */
@@ -93,15 +89,16 @@ width: 100%;
   transition: 0.4s background-color;
   z-index: 3;
   min-width: 35%;
-  font-family: 'Indie Flower', cursive;
+  font-family: "Indie Flower", cursive;
 }
 
 /* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
+.dropbtn:hover,
+.dropbtn:focus {
   background-color: rgb(89, 121, 99);
-  color:white;
+  color: white;
   border: 1px solid #333;
-  font-family: 'Indie Flower', cursive;
+  font-family: "Indie Flower", cursive;
 }
 
 button:hover {
@@ -110,14 +107,13 @@ button:hover {
 
 .close-icon {
   float: left;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: relative;
   display: inline-block;
-
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -125,19 +121,18 @@ button:hover {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-min-width: 20%;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  min-width: 20%;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   top: 20.89%;
   overflow-y: auto;
   max-height: 70%;
   font-size: 20px;
   overflow-x: hidden;
-  
 }
 
 /* Links inside the dropdown */
-.dropdown-content a {
+.categoryButton {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
@@ -146,23 +141,28 @@ min-width: 20%;
   font-size: 120%;
   background-color: rgb(60, 168, 109, 0.4);
   border: 1px solid rgb(110, 105, 105);
-  cursor:default;
+  cursor: default;
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd}
+.categoryButton:hover {
+  background-color: #ddd;
+}
 
+.categoryOnIt {
+  border: 3px solid rgba(105, 76, 98, 0.4);
+  background-color: rgba(105, 76, 98, 0.4);
+}
 
 .add:hover {
   background-color: rgb(44, 141, 87);
-} 
+}
 .delete-all:hover {
   background-color: rgb(44, 141, 87);
-} 
+}
 .edit:hover {
   background-color: rgb(44, 141, 87);
-} 
-
+}
 
 .delete:hover {
   background-color: rgb(44, 141, 87);
@@ -173,4 +173,6 @@ min-width: 20%;
 }
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
+.show {
+  display: block;
+}

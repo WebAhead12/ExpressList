@@ -84,8 +84,10 @@ function onCategoryClick(event) {
         if (json.data) {
           json.data.forEach((categoryName) => {
             let newDocument = document.createElement("a");
+            newDocument.classList.add("categoryButton");
             newDocument.addEventListener("click", onCategoryClick);
             newDocument.innerHTML = `<i class="fa fa-times close-icon"></i>${categoryName}`;
+            if (CURRENT_CATEGORY == categoryName) newDocument.classList.add("categoryOnIt");
             categoryList.append(newDocument);
           });
         }
@@ -151,6 +153,7 @@ newCategory.addEventListener("keyup", (event) => {
           json.data.forEach((categoryName) => {
             let newDocument = document.createElement("a");
             newDocument.addEventListener("click", onCategoryClick);
+            newDocument.classList.add("categoryButton");
             newDocument.innerHTML = `<i class="fa fa-times close-icon"></i>${categoryName}`;
             if (CURRENT_CATEGORY == categoryName) newDocument.classList.add("categoryOnIt");
             categoryList.append(newDocument);
@@ -260,3 +263,4 @@ function updateTaskList() {
 }
 
 updateTaskList();
+document.getElementById("headerTitle").innerText = `${window.location.href.split("/")[4]}'s To-Do List`;
