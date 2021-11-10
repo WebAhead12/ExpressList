@@ -1,14 +1,18 @@
 const path = require("path");
 const fs = require("fs");
 
-const dataPath = path.join(__dirname, "data");
-let dataList = require(path.join(dataPath, "todolist.json"));
+let dataList = require("./data/todolist.json");
+let accountList = require("./data/accounts.json");
 
 // Updates the accounts data file.
 function saveData() {
-  fs.writeFileSync(path.join(dataPath, "todolist.json"), JSON.stringify(dataList, undefined, 2));
+  fs.writeFileSync("./data/todolist.json", JSON.stringify(dataList, undefined, 2));
 }
 // Get the user todolist data.
+function checkUserLoginData(user) {
+  return accountList.find((element) => element["user"].toLowerCase() === user.toLowerCase());
+}
+
 function getUserData(user) {
   return dataList.find((element) => element["user"].toLowerCase() === user.toLowerCase());
 }
@@ -17,10 +21,12 @@ function setupToDoList(user) {
   if (getUserData(user)) return false;
   let obj = {
     user: user,
-    category: [],
+    categories: [],
     list: [],
   };
   dataList.push(obj);
+  console.log(dataList);
+  saveData();
   return true;
 }
 //Get the user categories list.
@@ -33,6 +39,7 @@ function getCategories(user) {
 function addCategory(user, category) {
   setupToDoList(user);
   let userData = getUserData(user);
+  console.log(userData);
   if (userData["categories"].find((categoryName) => categoryName.toLowerCase() === category.toLowerCase()))
     return false;
   userData["categories"].push(category);
@@ -99,6 +106,7 @@ function toggleTaskCompletion(user, taskText) {
 }
 
 module.exports = {
+  checkUserLoginData,
   getCategories,
   addCategory,
   removeCategory,
