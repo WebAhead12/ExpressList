@@ -23,6 +23,7 @@ body h1 {
   position: relative;
   background-color: rgba(109, 172, 137, 0.6);
   margin-bottom: 10px;
+  text-align: center;
   /* left: 10%; */
   width: 100%;
 }

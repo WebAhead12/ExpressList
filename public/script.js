@@ -300,7 +300,7 @@ function updateTask(method, task, newTask = "", category = "") {
       return response.json();
     })
     .then((json) => {
-      console.log(json);
+
       if (json.message) {
         taskInput.value = "";
         taskInput.style.background = "PaleGoldenrod";
