@@ -112,11 +112,38 @@ server.get("/user/:user/data/:type/:category", (req, res) => {
         return;
     }
   }
-  res.redirect(`/user/:user/data/${type}`);
+  res.redirect(`/user/${user}/data/${type}`);
 });
 
-//Receives the user new todolist data. {method: "modify", taskText: "Blah", newTaskText: "" }
-server.post("/user/:user/", (req, res) => {});
+//Receives the user new todolist data.
+server.post("/user/:user/", (req, res) => {
+  let user = req.params.user;
+  let method = req.body.method;
+  let category = req.body.category;
+  let taskText = req.body.taskText;
+  switch (method) {
+    case 'delete':
+      if (!deleteTask(user, taskText))
+        return res.send({ message: "unable to delete task" });
+      return res.send({ message: "task deleted" });
+    case 'modify':
+      let newTask = req.body.newTaskText;
+      if (!modifyTask(user, taskText, newTask))
+        return res.send({ message: "user doesn't exist OR taskText is equal to the new modefied text" });
+      return res.send({ message: "task modified successfully" });
+    case 'add':
+      if (!addTask(user, taskText, category))
+        return res.send({ message: "failed to add task, task already exist" });
+      return res.send({ message: "task changed successfully" });
+    case 'deleteAll':
+      if (!deleteAllTasks(user))
+        return res.send({ message: "user doesn't exist" });
+      return res.send({ message: "all task deleted successfully" });
+    case 'toggle':
+      if (!toggleTaskCompletion(user, taskText))
+        return res.send({ message: "user doesn't exist" });
+  }
+});
 
 //Receives the user new category, or category deletion.
 server.post("/user/:user/category", (req, res) => {
