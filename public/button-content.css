@@ -124,7 +124,7 @@ button:hover {
   min-width: 20%;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  top: 20.89%;
+  top: 63px;
   overflow-y: auto;
   max-height: 70%;
   font-size: 20px;
@@ -150,8 +150,8 @@ button:hover {
 }
 
 .categoryOnIt {
-  border: 3px solid rgba(105, 76, 98, 0.4);
-  background-color: rgba(105, 76, 98, 0.4);
+  border: 3px solid rgba(19, 146, 57, 0.4);
+  background-color: rgba(10, 85, 32, 0.4);
 }
 
 .add:hover {
