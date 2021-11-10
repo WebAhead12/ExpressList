@@ -65,12 +65,12 @@ server.get("/user/search/:user", (req, res) => {
 });
 
 //Sends the user his todolist data.
-server.get("/user/:user/data", (req, res) => {
+server.get("/user/:user/data/:type", (req, res) => {
   req.params.user;
 });
 
 //Receives the user new todolist data.
-server.post("/user/:user", (req, res) => {});
+server.post("/user/:user/:method", (req, res) => {});
 
 //Receives the user new category, or category deletion.
 server.post("/user/:user/category", (req, res) => {
