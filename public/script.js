@@ -11,6 +11,8 @@ const close = document.querySelector("#closeIcon");
 const categoryList = document.querySelector(".dropdown-links");
 const logout = document.querySelector(".log-out");
 
+let CURRENT_CATEGORY = "";
+
 //Logout button
 logout.addEventListener("click", (event) => {
   fetch("/logout")
@@ -56,7 +58,7 @@ newCategory.addEventListener("focusin", () => {
   newCategory.style.background = "white";
   newCategory.placeholder = "Create a new category...";
 });
-
+//Deletes category if x is clicked, otherwise updates the task list to show category only.
 function onCategoryClick(event) {
   if (event.target.classList.contains("close-icon")) {
     categoryList.innerHTML = "";
@@ -96,9 +98,10 @@ function onCategoryClick(event) {
         }, 1500);
       });
   } else {
+    //THIS NEEDS TO BE CODED TO REFRESH THE TASKS WITH CATEGORY
   }
 }
-
+//Create new category to be added to user category list.
 newCategory.addEventListener("keyup", (event) => {
   if (event.key == "Enter") {
     event.preventDefault();
@@ -180,37 +183,19 @@ var createNewTaskElement = function (taskString) {
   listItem.appendChild(deleteButton);
   return listItem;
 };
-
-//Creates the new task.
-var addTask = function () {
-  var listItem = createNewTaskElement(taskInput.value);
-  tasksHolder.appendChild(listItem);
-  bindTaskEvents(listItem, completedTasks);
-  taskInput.value = "";
-};
-
 //Changes the task position between active and completed.
-
-var bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
+var bindTaskEvents = function (taskListItem) {
   var checkBox = taskListItem.querySelector("input[type=checkbox]");
   var editButton = taskListItem.querySelector("button.edit");
   var deleteButton = taskListItem.querySelector("button.delete");
 
-  editButton.onclick = editTask;
-  deleteButton.onclick = deleteTask;
-  checkBox.onchange = checkBoxEventHandler;
+  editButton.onclick = function () { };
+  deleteButton.onclick = function () { };
+  checkBox.onchange = function () { };
 };
 
-for (var i = 0; i < tasksHolder.children.length; i++) {
-  bindTaskEvents(tasksHolder.children[i], completedTasks);
-}
-
-for (var i = 0; i < completedTasksHolder.children.length; i++) {
-  bindTaskEvents(completedTasksHolder.children[i], activeTasks);
-}
-
 //Adds a new task.
-addBtn.addEventListener("click", addTask);
+addBtn.addEventListener("click", {});
 
 taskInput.addEventListener("keyup", (event) => {
   if (event.key == "Enter") {
@@ -219,47 +204,17 @@ taskInput.addEventListener("keyup", (event) => {
   }
 });
 
-var editTask = function () {
-  var listItem = this.parentNode;
-
-  var editInput = listItem.querySelector("input[type=text]");
-  var label = listItem.querySelector("label");
-  var containsClass = listItem.classList.contains("editMode");
-
-  if (containsClass) {
-    label.innerText = editInput.value;
-  } else {
-    editInput.value = label.innerText;
-  }
-  listItem.classList.toggle("editMode");
-};
-
-var deleteTask = function () {
-  var listItem = this.parentNode;
-  var ul = listItem.parentNode;
-  ul.removeChild(listItem);
-};
-
-var completedTasks = function () {
-  var listItem = this.parentNode;
-  completedTasksHolder.appendChild(listItem);
-  bindTaskEvents(listItem, activeTasks);
-};
-
-var activeTasks = function () {
-  var listItem = this.parentNode;
-  tasksHolder.appendChild(listItem);
-  bindTaskEvents(listItem, completedTasks);
-};
-
 function updateTaskList(arr) {
   tasksHolder.innerHTML = "";
   completedTasksHolder.innerHTML = "";
   // [{taskName: "", completed: true}]
   arr.forEach((elem) => {
     let tempElement = createNewTaskElement(elem.taskText);
+    bindTaskEvents(tempElement);
     if (elem.completed) {
+      tasksHolder.appendChild(tempElement);
     } else {
+      completedTasksHolder.appendChild(tempElement);
     }
   });
 }

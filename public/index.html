@@ -1,141 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/button-content.css" <link rel="preconnect" href="https://fonts.gstatic.com"
-        crossorigin>
-    <script defer src="/script.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/button-content.css" <link rel="preconnect" href="https://fonts.gstatic.com"
+    crossorigin />
+  <script defer src="/script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" />
+</head>
 
+<div class="container">
+  <button class="log-out">Log Out</button>
+  <div class="todoListName">
+    <h1>My To-Do List</h1>
+  </div>
 
-    <div class="container">
-        <button class=log-out>Log Out</button>
-        <h1>My To-Do List</h1>
+  <div class="task-status">
+    <div type="button" class="status onIt" for="show-all">Show All</div>
 
+    &nbsp;
 
-        <div class="task-status">
-            <div type="button" class="status" for="show-all">
-                Show All
-            </div>
+    <div type="button" class="status" for="completed">Completed</div>
 
-            &nbsp;
+    &nbsp;
 
-            <div type="button" class="status " for="completed">
-                Completed
-            </div>
+    <div type="button" class="status" for="incomplete">Incomplete</div>
+  </div>
+  <main>
+    <div class="categories">
+      <button onclick="categoryDropDownToggle()" class="dropbtn">Categories</button>
+      <div id="myDropdown" class="dropdown-content">
+        <input id="status" type="text" placeholder="Create a new category..." />
+        <div class="dropdown-links"></div>
+      </div>
+    </div>
 
-            &nbsp;
-
-            <div type="button" class="status" for="incomplete">
-                Incomplete
-            </div>
-
-        </div>
-        <main>
-
-
-            <!-- have all-tasks set as default, have selected task stay selected until unselected, which them back to all tasks -->
-            <!-- add you will be signed up if you don't have an account to log-in -->
-            <!-- update CSS for password error placeholder -->
-            <!-- make search error placeholder -->
-
-
-            <div class="categories">
-                <button onclick="categoryDropDownToggle()" class="dropbtn">Categories</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <input id="status" type="text" placeholder="Create a new category...">
-                    <div class="dropdown-links">
-
-                        <a href="#"><i class="close-icon , fa fa-times"></i> Groceries
-                            </i></a>
-
-                        <a href="#"><i class="close-icon , fa fa-times"></i> School
-                            </i></a>
-
-                        <a href="#"><i class="close-icon , fa fa-times"></i> Work
-                        </a>
-
-                    </div>
-                </div>
-            </div>
-
-<body>
-    <h2>Active Tasks</h2>
-
-    <div class="active-tasks">
-        <p>
-            <label for="new-task"></label>
-            <input id="newTask" type="text" placeholder="Add new task here">
-        </p>
-        <button class=add>Add</button>
+    <body>
+      <label for="new-task"></label>
+      <input id="newTask" type="text" placeholder="Add new task here" />
+      <div class="taskButtons">
+        <button class="add">Add</button>
         <button class="delete-all">Clear All</button>
+      </div>
 
-        <ul id="tasks">
-            <li>
-                <input type="checkbox">
-                <label>A</label>
-                <input type="text">
-                <button class="edit">Edit</button>
-                <button class="delete">Delete</button>
-            </li>
-            <li class="edit-mode">
-                <input type="checkbox">
-                <label>B</label>
-                <input type="text" value="">
-                <button class="edit">Edit</button>
-                <button id='Cancel' data-text="Cancel" style="display:none;">Cancel</button>
-                <button class="delete">Delete</button>
-            </li>
-        </ul>
-    </div>
+      <h2><u>Active Tasks</u></h2>
+      <div class="active-tasks">
+        <ul id="tasks"></ul>
+      </div>
 
-    <div class="completed-tasks">
-        <h3>Completed Tasks</h3>
-
-        <ul id="completed-tasks">
-
-            <li>
-                <input type="checkbox" checked>
-                <label>C</label>
-                <input type="text" value="">
-                <button class="edit">Edit</button>
-                <button id='Cancel' data-text="Cancel" style="display:none;">Cancel</button>
-                <button class="delete">Delete</button>
-            </li>
-        </ul>
-    </div>
-
-
-</body>
-</main>
+      <div class="completed-tasks">
+        <h2><u>Completed Tasks</u></h2>
+        <ul id="completed-tasks"></ul>
+      </div>
+    </body>
+  </main>
 </div>
 
 </html>
-
-<!-- 
-     < <div class="categories">
-         <input type="text" class="new-list" placeholder="Create a new list" style="color: black;">
-         <input type="button" value="Add">
-
-         <br><br>
-    <div class="inline-list">
-     <button type="button" class="type">Homework </button>
-    
-     <input type="button" id="options" value="Edit">
-     <input type="button" id="options" value="Remove">
-     <button type="button" class="type">Work </button>
-     <input type="button" id="options" value="Edit">
-     <input type="button" id="options" value="Remove">
-     <button type="button" class="type">Groceries </button>
-     <input type="button" id="options" value="Edit">
-     <input type="button" id="options" value="Remove">
- </div>
-     </div> -->
