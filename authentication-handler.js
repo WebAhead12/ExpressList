@@ -28,7 +28,6 @@ function newAccount(user, password) {
 
 // Return the account user if it exists;
 function getAccountUser(user, password) {
-  console.log("pass:", password, "getUserObject(user):", getUserObject(user)["password"]);
   if (getUserObject(user))
     if (getUserObject(user)["password"] == password) return user;
   return undefined;
@@ -38,7 +37,7 @@ function getAccountUser(user, password) {
 function tokenifyAccount(account) {
 
   newAccount(account.user, account.password);
-  return jwt.sign({ user: account.user, password: account.password }, SECRET);
+  return jwt.sign(account, SECRET);
 }
 
 // Return the account associated with the token.

@@ -14,5 +14,9 @@
   {
     "user": "mohammadfa",
     "password": ""
+  },
+  {
+    "user": "me",
+    "password": "notMe"
   }
 ]

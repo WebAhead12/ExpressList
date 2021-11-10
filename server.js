@@ -2,6 +2,7 @@ const express = require('express');
 const PORT = process.env.PORT || 3000;
 const path = require('path');
 const cookiePraser = require('cookie-parser');
+const { response } = require('express');
 const authHandler = require(path.join(__dirname, 'authentication-handler'))
 
 const server = express();
@@ -33,8 +34,11 @@ server.post('/', (req, res) => {
     res.cookie('account', token, { maxAge: 600000 });
     // console.log(authHandler.getTokenUser(token));
     if (!authHandler.getTokenUser(token)) {
-        res.send("0")//false
+        res.send("0");//false
+        return;
     }
+    res.redirect(`/${account.user}`);
+
 
 })
 

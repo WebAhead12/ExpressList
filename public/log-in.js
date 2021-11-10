@@ -41,17 +41,14 @@ signInBtn.addEventListener("click", (event) => {
 
     .then(response => {
       if (!response.ok) throw new Error(response.status);
-      console.log(response);
-
       return response;
     }).then(json => {
-      console.log("reached")
       passwordInput.value = ''
       setTimeout(() => {
         passwordInput.style.background = 'white'
         passwordInput.placeholder = "New task!"
       }, 2500)
-      passwordInput.style.background = 'Aquamarine'
+      passwordInput.style.background = 'IndianRed'
       passwordInput.placeholder = "Wrong password!"
       alert.innerText = '';
     })
