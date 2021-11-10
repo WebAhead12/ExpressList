@@ -86,4 +86,13 @@ outline-color: rgba(109, 172, 137);
   margin: 5px 0 0 0;
   cursor: pointer;
   font-family: 'Indie Flower', cursive;
+  
  }
+
+ .search-button:hover {
+background-color: rgb(52, 141, 78);
+ }
+
+#sign-in:hover {
+  background-color: rgb(52, 141, 78);
+}

@@ -80,12 +80,13 @@ width: 100%;
   background-color: rgb(52, 141, 78);
   color: white;
   padding: 16px;
-  font-size: 16px;
+  font-size: 20px;
   border: none;
   cursor: pointer;
   transition: 0.4s background-color;
   z-index: 3;
   min-width: 35%;
+  font-family: 'Indie Flower', cursive;
 }
 
 /* Dropdown button on hover & focus */
@@ -93,6 +94,7 @@ width: 100%;
   background-color: rgb(89, 121, 99);
   color:white;
   border: 1px solid #333;
+  font-family: 'Indie Flower', cursive;
 }
 
 button:hover {
@@ -165,4 +167,3 @@ button:hover {
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
-

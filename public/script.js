@@ -189,9 +189,9 @@ var bindTaskEvents = function (taskListItem) {
   var editButton = taskListItem.querySelector("button.edit");
   var deleteButton = taskListItem.querySelector("button.delete");
 
-  editButton.onclick = function () {};
-  deleteButton.onclick = function () {};
-  checkBox.onchange = function () {};
+  editButton.onclick = function () { };
+  deleteButton.onclick = function () { };
+  checkBox.onchange = function () { };
 };
 
 //Adds a new task.
