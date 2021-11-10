@@ -10,11 +10,12 @@ const newCategory = document.querySelector("#status");
 const close = document.querySelector("#closeIcon");
 const categoryList = document.querySelector(".dropdown-links");
 const logout = document.querySelector(".log-out");
+const clearAllButton = document.querySelector(".delete-all");
 
 let CURRENT_CATEGORY = "";
 let CURRENT_OPTION = document.querySelector(".onIt").innerText;
 
-//Logout button
+//Logout button click event
 logout.addEventListener("click", (event) => {
   fetch("/logout")
     .then((response) => {
@@ -26,7 +27,7 @@ logout.addEventListener("click", (event) => {
     });
 });
 
-// Show all active coloring
+// Switch option (All, Complete, Incomplete)
 tasksStatus.addEventListener("click", (event) => {
   if (event.target == tasksStatus) return;
   for (let option of options) {
@@ -51,7 +52,7 @@ window.onclick = function (event) {
     }
   }
 };
-//Stops category js from applying to input
+//Stops category propagation.
 newCategory.addEventListener("click", (event) => {
   event.stopPropagation();
 });
@@ -203,7 +204,7 @@ var createNewTaskElement = function (taskString) {
   listItem.appendChild(deleteButton);
   return listItem;
 };
-//Changes the task position between active and completed.
+//Binds the buttons to their fetch funtions.
 var bindTaskEvents = function (taskListItem) {
   var checkBox = taskListItem.querySelector("input[type=checkbox]");
   var editButton = taskListItem.querySelector("button.edit");
@@ -223,20 +224,45 @@ var bindTaskEvents = function (taskListItem) {
     }
     listItem.classList.toggle("editMode");
   };
-  deleteButton.onclick = function () {};
-  checkBox.onchange = function () {};
+  deleteButton.onclick = function () {
+    listItem = this.parentNode;
+    const label = listItem.querySelector("label");
+    updateTask("delete", label.innerText);
+  };
+  checkBox.onchange = function () {
+    listItem = this.parentNode;
+    const label = listItem.querySelector("label");
+    updateTask("toggle", label.innerText);
+  };
 };
 
 //Adds a new task.
-addBtn.addEventListener("click", {});
+addBtn.addEventListener("click", () => {
+  updateTask("add", taskInput.value, "", CURRENT_CATEGORY);
+});
 
+//Creates new task when clicking enter
 taskInput.addEventListener("keyup", (event) => {
   if (event.key == "Enter") {
     event.preventDefault();
     addBtn.click();
+    taskInput.blur();
   }
 });
 
+//Clears all tasks.
+clearAllButton.addEventListener("click", () => {
+  updateTask("deleteAll");
+});
+
+//Resets task/Log input when clicking on it.
+taskInput.addEventListener("focusin", () => {
+  taskInput.placeholder = "Add new task here";
+  taskInput.value = "";
+  taskInput.style.background = "white";
+});
+
+//Updates the tasks list table.
 function updateTaskList() {
   let urlArray = window.location.href.replace("#", "").split("/");
   fetch(`/user/${urlArray[urlArray.length - 1]}/data/${CURRENT_OPTION}/${CURRENT_CATEGORY}`)
@@ -261,7 +287,7 @@ function updateTaskList() {
       }
     });
 }
-
+//Sends a fetch request according to which button was pressed.
 function updateTask(method, task, newTask = "", category = "") {
   let urlArray = window.location.href.replace("#", "").split("/");
   fetch(`/user/${urlArray[urlArray.length - 1]}`, {
@@ -276,10 +302,42 @@ function updateTask(method, task, newTask = "", category = "") {
     .then((json) => {
       console.log(json);
       if (json.message) {
+        taskInput.value = "";
+        taskInput.style.background = "PaleGoldenrod";
+        taskInput.placeholder = json.message;
+        setTimeout(() => {
+          if (taskInput.placeholder == json.message) taskInput.placeholder = "Add new task here";
+          taskInput.style.background = "white";
+        }, 5000);
         updateTaskList();
+      }
+    });
+}
+//Updates the categories list first time a user loads up someone's todolist.
+function updateCategoriesOnLogin() {
+  fetch(`/user/${window.location.href.split("/")[4]}/category`)
+    .then((response) => {
+      if (!response.ok) throw new Error(response.status);
+      return response.json();
+    })
+    .then((json) => {
+      if (json.data) {
+        json.data.forEach((categoryName) => {
+          let newDocument = document.createElement("a");
+          newDocument.classList.add("categoryButton");
+          newDocument.addEventListener("click", onCategoryClick);
+          newDocument.innerHTML = `<i class="fa fa-times close-icon"></i>${categoryName}`;
+          if (CURRENT_CATEGORY == categoryName) newDocument.classList.add("categoryOnIt");
+          categoryList.append(newDocument);
+        });
       }
     });
 }
 
 updateTaskList();
-document.getElementById("headerTitle").innerText = `${window.location.href.split("/")[4]}'s To-Do List`;
+updateCategoriesOnLogin();
+
+//Update the title of todolist page to reflect whose todolist it is associated to.
+let username = window.location.href.split("/")[4];
+username = username[0].toUpperCase() + username.slice(1);
+document.getElementById("headerTitle").innerText = `${username}'s To-Do List`;

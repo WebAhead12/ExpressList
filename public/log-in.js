@@ -5,13 +5,14 @@ const searchBtn = document.querySelector(".search-button");
 const signInBtn = document.querySelector("#sign-in");
 const alert = document.querySelector(".alert-box");
 
+//Attempt search when clicking enter while typing name.
 searchInput.addEventListener("keyup", (event) => {
   if (event.key == "Enter") {
     event.preventDefault();
     searchBtn.click();
   }
 });
-
+//Attempts search when clicking button.
 searchBtn.addEventListener("click", (event) => {
   fetch(`/user/search/${searchInput.value}`)
     .then((response) => {
@@ -41,20 +42,21 @@ searchBtn.addEventListener("click", (event) => {
   searchInput.value = "";
 });
 
+//Attempt login when clicking enter while typing name.
 userInput.addEventListener("keyup", (event) => {
   if (event.key == "Enter") {
     event.preventDefault();
     signInBtn.click();
   }
 });
-
+//Attempt login when clicking enter while typing password.
 passwordInput.addEventListener("keyup", (event) => {
   if (event.key == "Enter") {
     event.preventDefault();
     signInBtn.click();
   }
 });
-
+//Logs in and check name/password are correct.
 signInBtn.addEventListener("click", (event) => {
   fetch("/", {
     method: "POST",

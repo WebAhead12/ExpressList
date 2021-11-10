@@ -1,22 +1,12 @@
 [
   {
     "user": "Juan",
-    "categories": [
-      "batata",
-      "test",
-      "s",
-      "dskjf"
-    ],
+    "categories": [],
     "list": [
       {
         "taskText": "test",
         "completed": false,
         "category": ""
-      },
-      {
-        "taskText": "dwadwadwa22dwadwa",
-        "completed": false,
-        "category": "batata"
       }
     ]
   },
