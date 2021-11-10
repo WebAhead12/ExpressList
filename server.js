@@ -133,7 +133,7 @@ server.post("/user/:user/", (req, res) => {
     case "add":
       let category = req.body.category;
       if (!dataHandler.addTask(user, taskText, category))
-        return res.send({ message: "Failed to add task, task already exists." });
+        return res.send({ message: "Error: Task already exists." });
       return res.send({ message: "Task added successfully." });
     case "deleteAll":
       if (!dataHandler.deleteAllTasks(user)) return res.send({ message: "User doesn't exist." });

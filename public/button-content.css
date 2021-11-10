@@ -12,7 +12,7 @@
 .log-out {
   position: absolute;
   z-index: 5;
-  margin-top: 2%;
+  margin-top: 2.5%;
   display: flex;
   word-wrap: normal;
   background-color: rgba(10, 9, 9, 0.288);
@@ -20,7 +20,7 @@
   color: rgb(8, 8, 8);
   font-size: 140%;
   font-weight: 700;
-  margin-left: 2%;
+  margin-left: 15px;
   word-wrap: normal;
   max-width:calc(17% - 5px);
   height: calc(add);
