@@ -45,6 +45,13 @@ font-family: 'Indie Flower', cursive;
   border: 3px solid rgb(60, 168, 109, 0.4);
   background: rgb(60, 168, 109, 0.4);
 }
+
+
+.categoryOnIt:focus {
+  border: 3px solid rgb(60, 168, 109, 0.4);
+  background: rgb(60, 168, 109, 0.4);
+
+}
 .status {
   line-height: 3.5;
   font-weight: 700;
@@ -64,7 +71,7 @@ width: 100%;
 }
 
 #status {
-  width: 89%;
+  width: 90%;  
   border: 1px solid rgb(83, 163, 107);
 }
 
@@ -118,12 +125,14 @@ button:hover {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 35%;
+min-width: 20%;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  top: 9.3%;
+  top: 20.89%;
   overflow-y: auto;
   max-height: 70%;
+  font-size: 20px;
+  overflow-x: hidden;
   
 }
 
@@ -154,9 +163,7 @@ button:hover {
   background-color: rgb(44, 141, 87);
 } 
 
-.status:hover {
-  background-color: rgb(44, 141, 87);
-}
+
 .delete:hover {
   background-color: rgb(44, 141, 87);
 }
