@@ -211,17 +211,15 @@ var bindTaskEvents = function (taskListItem) {
 
   editButton.onclick = function () {
     listItem = this.parentNode;
-
     editInput = listItem.querySelector("input[type=text]");
     let label = listItem.querySelector("label");
     let containsClass = listItem.classList.contains("editMode");
 
     if (containsClass) {
+      updateTask("modify", label.innerText, editInput.value);
       label.innerText = editInput.value;
-      console.log("Editing");
     } else {
       editInput.value = label.innerText;
-      console.log("Editing2");
     }
     listItem.classList.toggle("editMode");
   };
@@ -240,8 +238,6 @@ taskInput.addEventListener("keyup", (event) => {
 });
 
 function updateTaskList() {
-  tasksHolder.innerHTML = "";
-  completedTasksHolder.innerHTML = "";
   let urlArray = window.location.href.replace("#", "").split("/");
   fetch(`/user/${urlArray[urlArray.length - 1]}/data/${CURRENT_OPTION}/${CURRENT_CATEGORY}`)
     .then((response) => {
@@ -249,6 +245,8 @@ function updateTaskList() {
       return response.json();
     })
     .then((json) => {
+      tasksHolder.innerHTML = "";
+      completedTasksHolder.innerHTML = "";
       if (json.length) {
         json.forEach((elem) => {
           let tempElement = createNewTaskElement(elem.taskText);
@@ -260,6 +258,25 @@ function updateTaskList() {
             tasksHolder.appendChild(tempElement);
           }
         });
+      }
+    });
+}
+
+function updateTask(method, task, newTask = "", category = "") {
+  let urlArray = window.location.href.replace("#", "").split("/");
+  fetch(`/user/${urlArray[urlArray.length - 1]}`, {
+    method: "POST",
+    body: JSON.stringify({ method: method, taskText: task, newTaskText: newTask, category: category }),
+    headers: { "content-type": "application/json" },
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error(response.status);
+      return response.json();
+    })
+    .then((json) => {
+      console.log(json);
+      if (json.message) {
+        updateTaskList();
       }
     });
 }
