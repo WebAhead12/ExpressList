@@ -88,6 +88,11 @@ server.post("/user/:user/category", (req, res) => {
   res.send({ data: dataHandler.getCategories(user) });
 });
 
+server.get("/logout", (req, res) => {
+  res.clearCookie("account");
+  res.send({ worked: true });
+});
+
 server.use(express.static("public"));
 
 server.get("/*", (req, res) => {

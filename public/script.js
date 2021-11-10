@@ -9,6 +9,19 @@ const dropdownContent = document.getElementsByClassName("dropdown-content");
 const newCategory = document.querySelector("#status");
 const close = document.querySelector("#closeIcon");
 const categoryList = document.querySelector(".dropdown-links");
+const logout = document.querySelector(".log-out");
+
+//Logout button
+logout.addEventListener("click", (event) => {
+  fetch("/logout")
+    .then((response) => {
+      if (!response.ok) throw new Error(response.status);
+      return response.json();
+    })
+    .then((json) => {
+      if (json.worked) window.location.href = "/";
+    });
+});
 
 // Show all active coloring
 tasksStatus.addEventListener("click", (event) => {
@@ -39,14 +52,11 @@ newCategory.addEventListener("click", (event) => {
   event.stopPropagation();
 });
 
-
 newCategory.addEventListener("focusin", () => {
   newCategory.value = "";
   newCategory.style.background = "white";
   newCategory.placeholder = "Create a new category...";
 });
-
-
 
 function onCategoryClick(event) {
   if (event.target.classList.contains("close-icon")) {
@@ -243,18 +253,14 @@ var activeTasks = function () {
   bindTaskEvents(listItem, completedTasks);
 };
 
-
 function updateTaskList(arr) {
-  tasksHolder.innerHTML = ""
-  completedTasksHolder.innerHTML = ""
+  tasksHolder.innerHTML = "";
+  completedTasksHolder.innerHTML = "";
   // [{taskName: "", completed: true}]
   arr.forEach((elem) => {
-    let tempElement = createNewTaskElement(elem.taskText)
+    let tempElement = createNewTaskElement(elem.taskText);
     if (elem.completed) {
-
     } else {
-
     }
-  })
+  });
 }
-
