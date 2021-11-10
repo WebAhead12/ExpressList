@@ -1,22 +1,6 @@
 [
   {
     "user": "Juan",
-    "password": "hi"
-  },
-  {
-    "user": "Nur",
-    "password": "Hi"
-  },
-  {
-    "user": "Mohammad",
-    "password": "Hi"
-  },
-  {
-    "user": "mohammadfa",
-    "password": ""
-  },
-  {
-    "user": "me",
-    "password": "notMe"
+    "password": "123"
   }
 ]

@@ -1,0 +1,23 @@
+[
+    {
+        "user": "Juan",
+        "categories": ["Grocery", "Schoolwork"],
+        "list": [
+            {
+                "taskText": "blah blah",
+                "completed": false,
+                "category": "Grocery"
+            },
+            {
+                "taskText": "buy milk",
+                "completed": true,
+                "category": "Grocery"
+            },
+            {
+                "taskText": "blah blah",
+                "completed": false,
+                "category": "Schoolwork"
+            }
+        ]
+    }
+] 
