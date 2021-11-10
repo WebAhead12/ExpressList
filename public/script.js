@@ -225,8 +225,8 @@ var bindTaskEvents = function (taskListItem) {
     }
     listItem.classList.toggle("editMode");
   };
-  deleteButton.onclick = function () {};
-  checkBox.onchange = function () {};
+  deleteButton.onclick = function () { };
+  checkBox.onchange = function () { };
 };
 
 //Adds a new task.
@@ -265,4 +265,4 @@ function updateTaskList() {
 }
 
 updateTaskList();
-document.getElementById("headerTitle").innerText = `${window.location.href.split("/")[4]}'s To-Do List`;
+document.getElementById("headerTitle").innerHTML = `${window.location.href.split("/")[4]}'s <br> To-Do List`;

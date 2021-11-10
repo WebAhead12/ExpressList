@@ -1,63 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="stylesheet" href="/button-content.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <script defer src="/script.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" />
-  </head>
 
-  <div class="container">
-    <button class="log-out">Log Out</button>
-    <div>
-      <h1 id="headerTitle">My To-Do List</h1>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/button-content.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script defer src="/script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" />
+</head>
 
-    <div class="task-status">
-      <div type="button" class="status onIt" for="show-all">Show All</div>
-
-      &nbsp;
-
-      <div type="button" class="status" for="completed">Completed</div>
-
-      &nbsp;
-
-      <div type="button" class="status" for="incomplete">Incomplete</div>
-    </div>
-    <main>
-      <div class="categories">
-        <button onclick="categoryDropDownToggle()" class="dropbtn">Categories</button>
-        <div id="myDropdown" class="dropdown-content">
-          <input id="status" type="text" placeholder="Create a new category..." />
-          <div class="dropdown-links"></div>
-        </div>
-      </div>
-
-      <body>
-        <label for="new-task"></label>
-        <input id="newTask" type="text" placeholder="Add new task here" />
-        <div class="taskButtons">
-          <button class="add">Add</button>
-          <button class="delete-all">Clear All</button>
-        </div>
-
-        <h2><u>Active Tasks</u></h2>
-        <div class="active-tasks">
-          <ul id="tasks"></ul>
-        </div>
-
-        <div class="completed-tasks">
-          <h2><u>Completed Tasks</u></h2>
-          <ul id="completed-tasks"></ul>
-        </div>
-      </body>
-    </main>
+<div class="container">
+  <button class="log-out">Log Out</button>
+  <div class=title>
+    <h1 id="headerTitle">My To-Do List</h1>
   </div>
+</div>
+<div class="task-status">
+  <div type="button" class="status onIt" for="show-all">Show All</div>
+
+  &nbsp;
+
+  <div type="button" class="status" for="completed">Completed</div>
+
+  &nbsp;
+
+  <div type="button" class="status" for="incomplete">Incomplete</div>
+</div>
+<main>
+  <div class="categories">
+    <button onclick="categoryDropDownToggle()" class="dropbtn">Categories</button>
+    <div id="myDropdown" class="dropdown-content">
+      <input id="status" type="text" placeholder="Create a new category..." />
+      <div class="dropdown-links"></div>
+    </div>
+  </div>
+
+  <body>
+    <label for="new-task"></label>
+    <input id="newTask" type="text" placeholder="Add new task here" />
+    <div class="taskButtons">
+      <button class="add">Add</button>
+      <button class="delete-all">Clear All</button>
+    </div>
+
+    <h2><u>Active Tasks</u></h2>
+    <div class="active-tasks">
+      <ul id="tasks"></ul>
+    </div>
+
+    <div class="completed-tasks">
+      <h2><u>Completed Tasks</u></h2>
+      <ul id="completed-tasks"></ul>
+    </div>
+  </body>
+</main>
+</div>
+
 </html>
