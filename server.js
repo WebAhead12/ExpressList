@@ -66,7 +66,6 @@ server.get("/user/search/:user", (req, res) => {
 });
 
 server.get("/user/:user/data/:type", (req, res) => {
-  console.log("object");
   let type = req.params.type;
   let user = req.params.user;
   userData = dataHandler.getUserData(user);
@@ -74,7 +73,7 @@ server.get("/user/:user/data/:type", (req, res) => {
     res.send([]);
     return;
   }
-  switch (type) {
+  switch (type.toLowerCase()) {
     case "completed":
       let completed = userData.list.filter((tasks) => tasks.completed);
       res.send(completed);
@@ -91,20 +90,19 @@ server.get("/user/:user/data/:type", (req, res) => {
 
 //Sends the user his todolist data.
 server.get("/user/:user/data/:type/:category", (req, res) => {
-  console.log("object");
   let type = req.params.type;
   let user = req.params.user;
-  let category = req.params.category;
+  let category = req.params.category.toLowerCase();
   userData = dataHandler.getUserData(user);
   if (userData.categories.includes(category)) {
-    let choosenCategory = userData.list.filter((tasks) => tasks.categories == category);
-    switch (type) {
+    let choosenCategory = userData.list.filter((tasks) => tasks.category.toLowerCase() == category);
+    switch (type.toLowerCase()) {
       case "completed":
-        let completed = choosenCategory.list.filter((tasks) => tasks.completed);
+        let completed = choosenCategory.filter((tasks) => tasks.completed);
         res.send(completed);
         return;
       case "incomplete":
-        let incomplete = choosenCategory.list.filter((tasks) => !tasks.completed);
+        let incomplete = choosenCategory.filter((tasks) => !tasks.completed);
         res.send(incomplete);
         return;
       default:
@@ -119,29 +117,27 @@ server.get("/user/:user/data/:type/:category", (req, res) => {
 server.post("/user/:user/", (req, res) => {
   let user = req.params.user;
   let method = req.body.method;
-  let category = req.body.category;
   let taskText = req.body.taskText;
   switch (method) {
-    case 'delete':
-      if (!deleteTask(user, taskText))
-        return res.send({ message: "unable to delete task" });
-      return res.send({ message: "task deleted" });
-    case 'modify':
+    case "delete":
+      if (!dataHandler.deleteTask(user, taskText)) return res.send({ message: "unable to delete task." });
+      return res.send({ message: "task deleted." });
+    case "modify":
       let newTask = req.body.newTaskText;
-      if (!modifyTask(user, taskText, newTask))
-        return res.send({ message: "user doesn't exist OR taskText is equal to the new modefied text" });
-      return res.send({ message: "task modified successfully" });
-    case 'add':
-      if (!addTask(user, taskText, category))
-        return res.send({ message: "failed to add task, task already exist" });
-      return res.send({ message: "task changed successfully" });
-    case 'deleteAll':
-      if (!deleteAllTasks(user))
-        return res.send({ message: "user doesn't exist" });
-      return res.send({ message: "all task deleted successfully" });
-    case 'toggle':
-      if (!toggleTaskCompletion(user, taskText))
-        return res.send({ message: "user doesn't exist" });
+      if (!dataHandler.modifyTask(user, taskText, newTask))
+        return res.send({ message: "user doesn't exist OR taskText is equal to the new modefied text." });
+      return res.send({ message: "task modified successfully." });
+    case "add":
+      let category = req.body.category;
+      if (!dataHandler.addTask(user, taskText, category))
+        return res.send({ message: "failed to add task, task already exist." });
+      return res.send({ message: "task changed successfully." });
+    case "deleteAll":
+      if (!dataHandler.deleteAllTasks(user)) return res.send({ message: "user doesn't exist." });
+      return res.send({ message: "all task deleted successfully." });
+    case "toggle":
+      if (!dataHandler.toggleTaskCompletion(user, taskText)) return res.send({ message: "user doesn't exist." });
+      return res.send({ message: "Toggle completed." });
   }
 });
 

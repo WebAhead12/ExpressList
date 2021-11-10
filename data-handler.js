@@ -25,7 +25,6 @@ function setupToDoList(user) {
     list: [],
   };
   dataList.push(obj);
-  console.log(dataList);
   saveData();
   return true;
 }
@@ -40,7 +39,6 @@ function getCategories(user) {
 function addCategory(user, category) {
   setupToDoList(user);
   let userData = getUserData(user);
-  console.log(userData);
   if (userData["categories"].find((categoryName) => categoryName.toLowerCase() === category.toLowerCase()))
     return false;
   userData["categories"].push(category);

@@ -66,7 +66,6 @@ signInBtn.addEventListener("click", (event) => {
       return response.json();
     })
     .then((json) => {
-      console.log(json.error);
       if (json.error) {
         passwordInput.value = "";
         setTimeout(() => {

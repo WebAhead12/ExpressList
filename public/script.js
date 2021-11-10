@@ -12,6 +12,7 @@ const categoryList = document.querySelector(".dropdown-links");
 const logout = document.querySelector(".log-out");
 
 let CURRENT_CATEGORY = "";
+let CURRENT_OPTION = document.querySelector(".onIt").innerText;
 
 //Logout button
 logout.addEventListener("click", (event) => {
@@ -32,6 +33,8 @@ tasksStatus.addEventListener("click", (event) => {
     option.classList.remove("onIt");
   }
   event.target.classList.add("onIt");
+  CURRENT_OPTION = event.target.innerText;
+  updateTaskList();
 });
 
 //Category Dropdown Toggle.
@@ -61,6 +64,11 @@ newCategory.addEventListener("focusin", () => {
 //Deletes category if x is clicked, otherwise updates the task list to show category only.
 function onCategoryClick(event) {
   if (event.target.classList.contains("close-icon")) {
+    //Updates the list back to default if the category being viewed got deleted.
+    if (CURRENT_CATEGORY == event.target.parentNode.innerText) {
+      CURRENT_CATEGORY = "";
+      updateTaskList();
+    }
     categoryList.innerHTML = "";
     let urlArray = window.location.href.replace("#", "").split("/");
     fetch(`/user/${urlArray[urlArray.length - 1]}/category`, {
@@ -83,14 +91,12 @@ function onCategoryClick(event) {
         }
       })
       .catch((error) => {
-        console.log(error);
         newCategory.value = "An error has occured";
         //Change value color to error color
         newCategory.style.background = "PaleGoldenrod";
         setTimeout(() => {
           if (newCategory.value == "An error has occured") {
             newCategory.value = "";
-
             //Change value color back to default
             newCategory.style.background = "white";
             newCategory.placeholder = "Create a new category";
@@ -98,12 +104,23 @@ function onCategoryClick(event) {
         }, 1500);
       });
   } else {
-    //THIS NEEDS TO BE CODED TO REFRESH THE TASKS WITH CATEGORY
+    let buttonsArray = Array.from(document.querySelectorAll(".dropdown-links a"));
+    buttonsArray.forEach((val) => {
+      val.classList.remove("categoryOnIt");
+    });
+    if (CURRENT_CATEGORY == event.target.innerText) {
+      CURRENT_CATEGORY = "";
+      event.target.classList.remove("categoryOnIt");
+    } else {
+      CURRENT_CATEGORY = event.target.innerText;
+      event.target.classList.add("categoryOnIt");
+    }
+    updateTaskList();
   }
 }
 //Create new category to be added to user category list.
 newCategory.addEventListener("keyup", (event) => {
-  if (event.key == "Enter") {
+  if (event.key == "Enter" && event.target.value.trim() != "") {
     event.preventDefault();
     newCategory.blur();
     categoryList.innerHTML = "";
@@ -134,13 +151,13 @@ newCategory.addEventListener("keyup", (event) => {
           json.data.forEach((categoryName) => {
             let newDocument = document.createElement("a");
             newDocument.addEventListener("click", onCategoryClick);
-            newDocument.innerHTML = `<i class="fa fa-times close-icon"></i> ${categoryName}`;
+            newDocument.innerHTML = `<i class="fa fa-times close-icon"></i>${categoryName}`;
+            if (CURRENT_CATEGORY == categoryName) newDocument.classList.add("categoryOnIt");
             categoryList.append(newDocument);
           });
         }
       })
       .catch((error) => {
-        console.log(error);
         newCategory.value = "An error has occured";
         //Change value color to error color
         newCategory.style.background = "PaleGoldenrod";
@@ -189,9 +206,22 @@ var bindTaskEvents = function (taskListItem) {
   var editButton = taskListItem.querySelector("button.edit");
   var deleteButton = taskListItem.querySelector("button.delete");
 
-  editButton.onclick = function () { };
-  deleteButton.onclick = function () { };
-  checkBox.onchange = function () { };
+  editButton.onclick = function () {
+    listItem = this.parentNode;
+
+    editInput = listItem.querySelector("input[type=text]");
+    let label = listItem.querySelector("label");
+    let containsClass = listItem.classList.contains("editMode");
+
+    if (containsClass) {
+      label.innerText = editInput.value;
+    } else {
+      editInput.value = label.innerText;
+    }
+    listItem.classList.toggle("editMode");
+  };
+  deleteButton.onclick = function () {};
+  checkBox.onchange = function () {};
 };
 
 //Adds a new task.
@@ -204,17 +234,29 @@ taskInput.addEventListener("keyup", (event) => {
   }
 });
 
-function updateTaskList(arr) {
+function updateTaskList() {
   tasksHolder.innerHTML = "";
   completedTasksHolder.innerHTML = "";
-  // [{taskName: "", completed: true}]
-  arr.forEach((elem) => {
-    let tempElement = createNewTaskElement(elem.taskText);
-    bindTaskEvents(tempElement);
-    if (elem.completed) {
-      tasksHolder.appendChild(tempElement);
-    } else {
-      completedTasksHolder.appendChild(tempElement);
-    }
-  });
+  let urlArray = window.location.href.replace("#", "").split("/");
+  fetch(`/user/${urlArray[urlArray.length - 1]}/data/${CURRENT_OPTION}/${CURRENT_CATEGORY}`)
+    .then((response) => {
+      if (!response.ok) throw new Error(response.status);
+      return response.json();
+    })
+    .then((json) => {
+      if (json.length) {
+        json.forEach((elem) => {
+          let tempElement = createNewTaskElement(elem.taskText);
+          bindTaskEvents(tempElement);
+          if (elem.completed) {
+            completedTasksHolder.appendChild(tempElement);
+            tempElement.querySelector("input[type=checkbox]").checked = true;
+          } else {
+            tasksHolder.appendChild(tempElement);
+          }
+        });
+      }
+    });
 }
+
+updateTaskList();

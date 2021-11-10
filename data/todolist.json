@@ -2,26 +2,11 @@
   {
     "user": "Juan",
     "categories": [
-      "Grocery",
-      "Schoolwork"
+      "batata",
+      "test",
+      "s"
     ],
-    "list": [
-      {
-        "taskText": "blah blah",
-        "completed": false,
-        "categories": "Grocery"
-      },
-      {
-        "taskText": "buy milk",
-        "completed": true,
-        "categories": "Grocery"
-      },
-      {
-        "taskText": "blah blahb",
-        "completed": false,
-        "categories": "Schoolwork"
-      }
-    ]
+    "list": []
   },
   {
     "user": "karyum",
