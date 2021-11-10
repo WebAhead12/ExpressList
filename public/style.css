@@ -1,3 +1,6 @@
+
+
+
 .container {
   z-index: -1;
 }
@@ -58,6 +61,8 @@ input[type="text"] {
   border-radius: 6px;
   color: #888;
   font-family: "Indie Flower", cursive;
+  width: 250px;
+  ;
 }
 input[type="text"]:focus {
   color: #333;

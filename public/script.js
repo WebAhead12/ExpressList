@@ -340,4 +340,4 @@ updateCategoriesOnLogin();
 //Update the title of todolist page to reflect whose todolist it is associated to.
 let username = window.location.href.split("/")[4];
 username = username[0].toUpperCase() + username.slice(1);
-document.getElementById("headerTitle").innerText = `${username}'s To-Do List`;
+document.getElementById("headerTitle").innerHTML = `${username}'s<br> To-Do List`;

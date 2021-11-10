@@ -8,23 +8,22 @@
   border-radius: 100%;
   text-align: center;
 }
-/* adjust in media query */
+
 .log-out {
   position: absolute;
   z-index: 5;
   margin-top: 1%;
   display: flex;
-  flex-wrap: wrap;
+  word-wrap: normal;
   background-color: rgba(10, 9, 9, 0.288);
   border: 0px;
   color: rgb(8, 8, 8);
-  font-size: 80%;
+  font-size: 140%;
   font-weight: 700;
   margin-left: 2%;
   word-wrap: normal;
-  max-width: 10%;
-  height: fit-content;
-
+  max-width: 15%;
+  height: 60px;
   cursor: pointer;
   font-family: "Indie Flower", cursive;
 }
