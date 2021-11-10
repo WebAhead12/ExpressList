@@ -14,7 +14,7 @@ body h1 {
     display: flex;
     justify-content: center;
     position: relative;
- background-color: rgb(60, 168, 109, 0.4);
+ background-color: rgba(109, 172, 137, 0.6);;
   margin-bottom: 10px;
 }
 
@@ -24,8 +24,27 @@ body{
   background-image:url(./Css%20stuff/backgroundimg.png);
   color: #333;
   font-family: 'Indie Flower', cursive;
-      background-color: rgb(60, 168, 109, 0.4);
+      background-color: rgba(109, 172, 137, 0.6);
 
+}
+
+.categories {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+top: -80px;
+text-align: center;
+background-color:rgba(109, 172, 137);
+width: 100%;
+}
+
+.cat-content {
+  font-size: 130%;
+  font-weight: 700;
+  margin-left: 7%;
+  margin-right:7%;
+ 
 }
 
 .task-status {
@@ -37,6 +56,7 @@ body{
 top: -80px;
 border-radius: 100%;
 text-align: center;
+
 }
 
 .status {
@@ -78,6 +98,10 @@ li {
 .onIt{
   border: 3px solid rgb(60, 168, 109, 0.4);
   background: rgb(60, 168, 109, 0.4);
+}
+
+.status {
+  background-color:rgba(116, 111, 111, 0.8);
 }
 button:hover {
   color: #333;
@@ -158,3 +182,54 @@ ul li.editMode label {
   display:none;
 }
 
+/* Dropdown Button */
+.dropbtn {
+  background-color: rgb(52, 141, 78);
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+    transition: 0.4s background-color;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: rgb(89, 121, 99);
+  color:white;
+  border: 1px solid #333;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-weight: 700;
+  font-size: 120%;
+  background-color: rgb(60, 168, 109, 0.4);
+  border: 1px solid rgb(110, 105, 105);
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}

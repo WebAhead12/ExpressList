@@ -4,6 +4,25 @@ var tasksHolder = document.getElementById("tasks");
 var completedTasksHolder = document.getElementById("completed-tasks");
 const options = document.querySelectorAll('.status')
 const tasksStatus = document.querySelector('.task-status')
+const myDropdown = document.getElementById("myDropdown")
+const dropdownContent = document.getElementsByClassName("dropdown-content")
+
+
+function myFunction() {
+  myDropdown.classList.toggle("show");
+}
+
+window.onclick = function (event) {
+  if (!event.target.matches(".dropbtn")) {
+    var i
+    for (i = 0; i < dropdownContent.length; i++) {
+      var openDropdown = dropdownContent[i];
+      if (openDropdown.classList.contains("show")) {
+        openDropdown.classList.remove("show");
+      }
+    }
+  }
+}
 
 tasksStatus.addEventListener('click', (event) => {
   console.log(event.target);

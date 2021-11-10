@@ -17,47 +17,36 @@
         <h1>My To-Do List</h1>
 
         <div class="task-status">
-            <div>
-                <div type="button" class="status" for="show-all">
-                    Show All
-                </div>
+
+            <div type="button" class="status" for="show-all">
+                Show All
             </div>
+
             &nbsp;
-            <div>
-                <div class="status " for="completed">
-                    Completed
-                </div>
+
+            <div type="button" class="status " for="completed">
+                Completed
             </div>
+
             &nbsp;
-            <div>
-                <div class="status" for="incomplete">
-                    Incomplete
-                </div>
+
+            <div type="button" class="status" for="incomplete">
+                Incomplete
             </div>
+
         </div>
         <main>
 
 
 
             <div class="categories">
-                <div type="button" class="cat-content" for="show-all">
-                    Groceries
-                </div>
-                &nbsp;
-                <div type="button" class="cat-content" for="completed">
-                    Work
-                </div>
-                &nbsp;
-                <div type="button" class="cat-content" for="incomplete">
-                    School
+                <button onclick="myFunction()" class="dropbtn">Categories</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#">Groceries</a>
+                    <a href="#">School</a>
+                    <a href="#">Work</a>
                 </div>
             </div>
-
-            <!-- <div class=task-status>
-            <div class=status>Show All</div>
-            <div class=status>Completed</div>
-            <div class=status>Incomplete</div>
-        </div> -->
 
 <body>
     <h2>Active Tasks</h2>
