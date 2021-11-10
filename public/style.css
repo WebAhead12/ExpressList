@@ -3,45 +3,38 @@
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-top: 10px;
-    position: relative;
-    background-color: rgb(60, 168, 109, 0.4); 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+  position: relative;
+  background-color: rgb(60, 168, 109, 0.4);
 }
 
-
-
 body h1 {
-    color: #333;
-    display: flex;
-    justify-content: center;
-    position: relative;
- background-color: rgba(109, 172, 137, 0.6);
+  color: #333;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  background-color: rgba(109, 172, 137, 0.6);
   margin-bottom: 10px;
   /* left: 10%; */
   width: 100%;
 }
 
-
 /* Basic Style */
-body{
-  background-image:url(./Css%20stuff/backgroundimg.png);
+body {
+  background-image: url(./Css%20stuff/backgroundimg.png);
   color: #333;
-  font-family: 'Indie Flower', cursive;
-      background-color: rgba(109, 172, 137, 0.6);
-
+  font-family: "Indie Flower", cursive;
+  background-color: rgba(109, 172, 137, 0.6);
 }
-
 
 ul {
   margin: 0;
   padding: 0;
-  
-  
 }
 
 /*  setting all elements to have zero margins, and zero padding */
@@ -50,10 +43,9 @@ li * {
 }
 
 li {
-  clear:both;
-  list-style:none;
+  clear: both;
+  list-style: none;
 }
-
 
 input[type="text"] {
   margin: 0;
@@ -65,15 +57,14 @@ input[type="text"] {
   background: #fff;
   border-radius: 6px;
   color: #888;
-font-family: 'Indie Flower', cursive;
-
+  font-family: "Indie Flower", cursive;
 }
 input[type="text"]:focus {
   color: #333;
 }
 
 /* New Task */
-label[for='new-task'] {
+label[for="new-task"] {
   display: block;
   margin: 0 0 20px;
 }
@@ -82,14 +73,12 @@ input#new-task {
   width: 318px;
 }
 
-
 /* tasklist */
 li {
   overflow: hidden;
   padding: 20px 0;
   border-bottom: 1px solid #eee;
   font-weight: 700;
-
 }
 
 /* The > sign is to signify parent/child */
@@ -104,7 +93,7 @@ li > label {
   width: 237px;
   padding: 0 0 0 11px;
 }
-li >  input[type="text"] {
+li > input[type="text"] {
   width: 226px;
 }
 li > .delete:hover {
@@ -118,15 +107,14 @@ li > .delete:hover {
 }
 
 /* Edit Task */
-ul li input[type=text] {
-  display:none;
+ul li input[type="text"] {
+  display: none;
 }
 
-ul li.editMode input[type=text] {
-  display:block;
+ul li.editMode input[type="text"] {
+  display: block;
 }
 
 ul li.editMode label {
-  display:none;
+  display: none;
 }
-

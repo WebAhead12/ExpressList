@@ -6,7 +6,15 @@
       "test",
       "s"
     ],
-    "list": []
+    "list": [{
+      "taskText": "dwadwadwa",
+      "completed": false,
+      "category": ""
+    },{
+      "taskText": "dwadwadwa22",
+      "completed": false,
+      "category": "batata"
+    }]
   },
   {
     "user": "karyum",

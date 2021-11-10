@@ -218,8 +218,10 @@ var bindTaskEvents = function (taskListItem) {
 
     if (containsClass) {
       label.innerText = editInput.value;
+      console.log("Editing");
     } else {
       editInput.value = label.innerText;
+      console.log("Editing2");
     }
     listItem.classList.toggle("editMode");
   };
