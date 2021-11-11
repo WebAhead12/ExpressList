@@ -43,7 +43,7 @@ server.post("/", (req, res) => {
 
 //Sends the user his todolist page.
 server.get("/user/:user", (req, res) => {
-  let account = dataHandler.checkUserLoginData(req.params.user);
+  let account = dataHandler.searchUserByName(req.params.user);
   if (!account) {
     res.redirect("/");
     return;

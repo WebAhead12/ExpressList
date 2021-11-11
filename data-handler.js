@@ -8,14 +8,16 @@ let accountList = require("./data/accounts.json");
 function saveData() {
   fs.writeFileSync("./data/todolist.json", JSON.stringify(dataList, undefined, 2));
 }
+
 // Get the user todolist data.
-function checkUserLoginData(user) {
+function searchUserByName(user) {
   return accountList.find((element) => element["user"].toLowerCase() === user.toLowerCase());
 }
 
 function getUserData(user) {
   return dataList.find((element) => element["user"].toLowerCase() === user.toLowerCase());
 }
+
 // Setup a default data for a user.
 function setupToDoList(user) {
   if (getUserData(user)) return false;
@@ -45,6 +47,7 @@ function addCategory(user, category) {
   saveData();
   return true;
 }
+
 // Removes a category from user's data.
 function removeCategory(user, category) {
   let userData = getUserData(user);
@@ -54,6 +57,7 @@ function removeCategory(user, category) {
   saveData();
   return true;
 }
+
 // Adds a new todo list task to user's data.
 function addTask(user, taskText, category = "") {
   setupToDoList(user);
@@ -68,6 +72,7 @@ function addTask(user, taskText, category = "") {
   saveData();
   return true;
 }
+
 // Modifies an existing todo list task data.
 function modifyTask(user, oldTaskText, newTaskText) {
   let userData = getUserData(user);
@@ -78,6 +83,7 @@ function modifyTask(user, oldTaskText, newTaskText) {
   saveData();
   return true;
 }
+
 // Deletes an existing todo list task.
 function deleteTask(user, taskText) {
   let userData = getUserData(user);
@@ -86,6 +92,7 @@ function deleteTask(user, taskText) {
   saveData();
   return true;
 }
+
 // Deletes all todo list tasks.
 function deleteAllTasks(user) {
   let userData = getUserData(user);
@@ -94,6 +101,7 @@ function deleteAllTasks(user) {
   saveData();
   return true;
 }
+
 // Toggles a task completion between true and false.
 function toggleTaskCompletion(user, taskText) {
   let userData = getUserData(user);
@@ -106,7 +114,7 @@ function toggleTaskCompletion(user, taskText) {
 
 module.exports = {
   getUserData,
-  checkUserLoginData,
+  searchUserByName,
   getCategories,
   addCategory,
   removeCategory,
