@@ -1,9 +1,20 @@
+
+@media (min-width:1440px) and (max-width:2560px){
+  body {
+  background-repeat:no-repeat;
+}
+}
+
 body{
   background-image:url(./Css%20stuff/backgroundimg.png);
+ 
+
+  
   color: #333;
   font-family: 'Indie Flower', cursive;
       background-color: rgb(60, 168, 109, 0.4);
       z-index: -1;
+      
 }
 
 h2 {
