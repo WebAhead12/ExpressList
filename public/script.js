@@ -11,7 +11,7 @@ const close = document.querySelector("#closeIcon");
 const categoryList = document.querySelector(".dropdown-links");
 const logout = document.querySelector(".log-out");
 const clearAllButton = document.querySelector(".delete-all");
-
+const categoryName = document.querySelector(".category-name p")
 let CURRENT_CATEGORY = "";
 let CURRENT_OPTION = document.querySelector(".onIt").innerText;
 
@@ -264,6 +264,7 @@ taskInput.addEventListener("focusin", () => {
 
 //Updates the tasks list table.
 function updateTaskList() {
+  categoryName.textContent = `Selected category: ${CURRENT_CATEGORY || "default"}`;
   let urlArray = window.location.href.replace("#", "").split("/");
   fetch(`/user/${urlArray[urlArray.length - 1]}/data/${CURRENT_OPTION}/${CURRENT_CATEGORY}`)
     .then((response) => {
@@ -289,6 +290,7 @@ function updateTaskList() {
 }
 //Sends a fetch request according to which button was pressed.
 function updateTask(method, task = "", newTask = "", category = "") {
+
   let urlArray = window.location.href.replace("#", "").split("/");
   fetch(`/user/${urlArray[urlArray.length - 1]}`, {
     method: "POST",
@@ -340,3 +342,5 @@ updateCategoriesOnLogin();
 let username = window.location.href.split("/")[4];
 username = username[0].toUpperCase() + username.slice(1);
 document.getElementById("headerTitle").innerHTML = `${username}'s<br> To-Do List`;
+
+

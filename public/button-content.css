@@ -26,6 +26,11 @@ word-wrap: normal;
   font-family: "Indie Flower", cursive;
 }
 
+.category-name {
+  font-weight:900;
+  font-size: 150%;
+}
+
 .add,
 .delete-all,
 .edit,
