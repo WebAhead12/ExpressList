@@ -1,54 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="log-in.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script defer src="log-in.js"></script>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="log-in.css">
-  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <script defer src="log-in.js"></script>
+    <title>Log-in</title>
+  </head>
 
-  <title>Log-in</title>
-</head>
+  <body>
+    <h2>Welcome to Express Pages</h2>
+    <div class="container">
+      <div class="search-user">
+        <label>
+          <h3><u>Search User To-Do List:</u></h3>
+        </label>
 
-<body>
-
-  <h2>Welcome to Express Pages</h2>
-  <div class="container">
-    <div class="search-user">
-      <label>
-        <h3><u>Search User To-Do List:</u></h3>
-      </label>
-
-      <input type="text" id="search-user" placeholder="Enter Username Here">
-      <br>
-      <br>
-      <input type="submit" class="search-button" value="Search">
-
+        <input type="text" id="search-user" placeholder="Enter Username Here" />
+        <br />
+        <br />
+        <input type="submit" class="search-button" value="Search" />
+      </div>
+      <br />
+      <br />
+      <div class="login">
+        <h3><u>Log in</u></h3>
+        <div>
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" placeholder="e.g. karyum" />
+        </div>
+        <br />
+        <div>
+          <label for="pass">Password:</label>
+          <input type="password" id="pass" name="password" placeholder="Password" />
+        </div>
+        <div class="alert-box"></div>
+        <br />
+        <input type="submit" id="sign-in" value="Sign in" />
+        <p>*If you don't have an account, an account will automatically be made for you when you log in.</p>
+      </div>
+      <br />
     </div>
-    <br>
-    <br>
-    <div class='login'>
-      <h3><u>Log in</u></h3>
-      <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" placeholder="e.g. karyum">
-      </div>
-      <br>
-      <div>
-        <label for="pass">Password:</label>
-        <input type="password" id="pass" name="password" placeholder="Password">
-      </div>
-      <div class="alert-box">
-      </div>
-      <br>
-      <input type="submit" id="sign-in" value="Sign in">
-      <p>*If you don't have an account, an account will automatically be made for you when you log in.</p>
-    </div>
-    <br>
-  </div>
-</body>
-
+  </body>
 </html>

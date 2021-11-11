@@ -22,7 +22,7 @@
   font-weight: 700;
   margin-left: 15px;
   word-wrap: normal;
-  max-width:calc(17% - 5px);
+  max-width: calc(17% - 5px);
   height: calc(add);
   cursor: pointer;
   font-family: "Indie Flower", cursive;

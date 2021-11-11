@@ -37,12 +37,12 @@ function tokenifyAccount(account) {
 }
 
 // Return the account associated with the token.
-function getTokenUser(token) {
+function checkRegisteredUser(token) {
   let tempAcc = jwt.verify(token, SECRET);
   return getAccountUser(tempAcc["user"], tempAcc["password"]);
 }
 
 module.exports = {
-  getTokenUser,
+  checkRegisteredUser,
   tokenifyAccount,
 };
