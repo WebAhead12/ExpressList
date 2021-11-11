@@ -12,15 +12,14 @@
 .log-out {
   position: absolute;
   z-index: 2;
-  top: 50px;
-
-  word-wrap: normal;
+  top:50px;
+word-wrap: normal;
   background-color: rgba(10, 9, 9, 0.288);
   border: 0px;
   color: rgb(8, 8, 8);
   font-size: 140%;
   font-weight: 700;
-  /* margin-left: 15px; */
+  margin-left: 15px;
   /* max-width:calc(17% - 5px); */
   /* height: calc(add); */
   cursor: pointer;

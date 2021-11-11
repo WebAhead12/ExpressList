@@ -88,8 +88,10 @@ li > input[type="checkbox"] {
   margin: 0 10px;
   position: relative;
   top: 15px;
+  word-wrap:normal;
 }
 li > label {
+  display: flex;
   font-size: 18px;
   line-height: 40px;
   width: 237px;
