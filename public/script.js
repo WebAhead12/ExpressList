@@ -288,7 +288,7 @@ function updateTaskList() {
     });
 }
 //Sends a fetch request according to which button was pressed.
-function updateTask(method, task, newTask = "", category = "") {
+function updateTask(method, task = "", newTask = "", category = "") {
   let urlArray = window.location.href.replace("#", "").split("/");
   fetch(`/user/${urlArray[urlArray.length - 1]}`, {
     method: "POST",
@@ -300,7 +300,6 @@ function updateTask(method, task, newTask = "", category = "") {
       return response.json();
     })
     .then((json) => {
-
       if (json.message) {
         taskInput.value = "";
         taskInput.style.background = "PaleGoldenrod";

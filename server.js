@@ -2,7 +2,6 @@ const express = require("express");
 const PORT = process.env.PORT || 3000;
 const path = require("path");
 const cookiePraser = require("cookie-parser");
-const { send } = require("process");
 const authHandler = require(path.join(__dirname, "authentication-handler"));
 const dataHandler = require(path.join(__dirname, "data-handler"));
 
@@ -15,20 +14,17 @@ server.use(cookiePraser());
 server.use((req, res, next) => {
   const token = req.cookies.account;
   if (token) {
-    const user = authHandler.getTokenUser(token);
-    if (user != undefined) req.user = user;
+    const user = authHandler.checkRegisteredUser(token);
+    if (user) req.user = user;
   }
   next();
 });
 
 //Checks if the user is logged in (through cookies) and redirects them to their page, else to login
 server.get("/", (req, res) => {
-  if (req.cookies.account) {
-    let account = authHandler.getTokenUser(req.cookies.account);
-    if (account) {
-      res.redirect(`/user/${account}`);
-      return;
-    }
+  if (req.user) {
+    res.redirect(`/user/${account}`);
+    return;
   }
   res.sendFile(path.join(__dirname, "public", "log-in.html"));
 });
@@ -37,17 +33,17 @@ server.get("/", (req, res) => {
 server.post("/", (req, res) => {
   const account = req.body;
   const token = authHandler.tokenifyAccount(account);
-  res.cookie("account", token, { maxAge: 600000 });
-  if (!authHandler.getTokenUser(token)) {
+  if (!authHandler.checkRegisteredUser(token)) {
     res.send({ error: "Password incorrect." });
     return;
   }
+  res.cookie("account", token, { maxAge: 600000 });
   res.send({ user: account.user });
 });
 
 //Sends the user his todolist page.
 server.get("/user/:user", (req, res) => {
-  let account = dataHandler.checkUserLoginData(req.params.user);
+  let account = dataHandler.searchUserByName(req.params.user);
   if (!account) {
     res.redirect("/");
     return;
@@ -119,28 +115,32 @@ server.post("/user/:user/", (req, res) => {
   let user = req.params.user;
   let method = req.body.method;
   let taskText = req.body.taskText;
+  let newTask = req.body.newTaskText;
+  let category = req.body.category;
   if (!req.user || user != req.user) {
     return res.send({ message: "Not your to-do list." });
   }
+
+  if (!dataHandler.getUserData(user)) {
+    return res.send({ message: `Unable to ${method} task` });
+  }
+  let result = false;
   switch (method) {
     case "delete":
-      if (!dataHandler.deleteTask(user, taskText)) return res.send({ message: "Unable to delete task." });
-      return res.send({ message: "Task deleted." });
+      result = dataHandler.deleteTask(user, taskText);
+      return res.send({ message: "Task deleted.", result: result });
     case "modify":
-      let newTask = req.body.newTaskText;
-      if (!dataHandler.modifyTask(user, taskText, newTask)) return res.send({ message: "User doesn't exist" });
-      return res.send({ message: "Task modified successfully." });
+      result = dataHandler.modifyTask(user, taskText, newTask);
+      return res.send({ message: "Task modified successfully.", result: result });
     case "add":
-      let category = req.body.category;
-      if (!dataHandler.addTask(user, taskText, category))
-        return res.send({ message: "Error: Task already exists." });
-      return res.send({ message: "Task added successfully." });
+      result = dataHandler.addTask(user, taskText, category);
+      return res.send({ message: "Task added successfully.", result: result });
     case "deleteAll":
-      if (!dataHandler.deleteAllTasks(user)) return res.send({ message: "User doesn't exist." });
-      return res.send({ message: "All tasks deleted successfully." });
+      result = dataHandler.deleteAllTasks(user);
+      return res.send({ message: "All tasks deleted successfully.", result: result });
     case "toggle":
-      if (!dataHandler.toggleTaskCompletion(user, taskText)) return res.send({ message: "User doesn't exist." });
-      return res.send({ message: "Toggle completed." });
+      result = dataHandler.toggleTaskCompletion(user, taskText);
+      return res.send({ message: "Toggle completed.", result: result });
   }
 });
 //Send the user categories list.
