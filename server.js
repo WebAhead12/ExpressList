@@ -23,7 +23,7 @@ server.use((req, res, next) => {
 //Checks if the user is logged in (through cookies) and redirects them to their page, else to login
 server.get("/", (req, res) => {
   if (req.user) {
-    res.redirect(`/user/${account}`);
+    res.redirect(`/user/${req.user}`);
     return;
   }
   res.sendFile(path.join(__dirname, "public", "log-in.html"));
