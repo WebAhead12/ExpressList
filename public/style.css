@@ -88,7 +88,7 @@ li > input[type="checkbox"] {
   margin: 0 10px;
   position: relative;
   top: 15px;
-  word-wrap:normal;
+  word-wrap:break-all;
 }
 li > label {
   display: flex;
@@ -96,6 +96,7 @@ li > label {
   line-height: 40px;
   width: 237px;
   padding: 0 0 0 11px;
+  word-break:break-all;
 }
 li > input[type="text"] {
   width: 226px;
