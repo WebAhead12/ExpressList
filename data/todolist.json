@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "user": "Nur",
+    "categories": [
+      "work",
+      "default"
+    ],
+    "list": [
+      {
+        "taskText": "",
+        "completed": false,
+        "category": "work"
+      },
+      {
+        "taskText": "1",
+        "completed": false,
+        "category": "work"
+      }
+    ]
+  }
+]
